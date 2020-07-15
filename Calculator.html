@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Calculator</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        Operand 1<input type="text" id="first" name="first" size="8"><br>
+        Operand 2<input type="text" id="second" name="second" size="8"><br>
+        <br><br>
+
+        <input type="button" value="+" onclick="calculate()";>
+        <input type="button" value="-" onclick="calculate()";>
+        <input type="button" value="*" onclick="calculate()";>
+        <input type="button" value="/" onclick="calculate()";>
+
+        Result <span id="res"></span>
+        
+        <script >
+        
+        function calculate(){
+            var operation = event.target.value;
+
+            var first = parseInt(document.getElementById("first").value);
+            var second = parseInt(document.getElementById("second").value);
+
+            var result = document.getElementById("res");
+
+            if(checkOperand(first,second)){
+
+                if(operation =="+"){
+                    result.innerHTML= first+"+"+second+"="+(first+second);
+                }
+               else if(operation =="-"){
+                    result.innerHTML= first+"-"+second+"="+(first-second);
+                }
+                else if(operation =="*"){
+                    result.innerHTML= first+"*"+second+"="+(first*second);
+                }
+                else if(operation =="/"){
+                    result.innerHTML= first+"-/"+second+"="+(first/second).toFixed(2);
+                }
+                else{
+                    result.innerHTML= "Operation not recognised"; 
+                }
+            }
+
+        }
+
+        function checkOperand(f,s){
+            var result = document.getElementById("res");
+            if(isNaN(f)){
+                result.innerHTML = "First operand not corect!" 
+                return false;       
+                   }
+            else if(isNaN(s))  {
+                result.innerHTML="Second operand not corect!"
+                return false;
+            }  
+            else {
+                return true;
+            }  
+
+        }
+        
+        </script>
+    </body>
+</html>
