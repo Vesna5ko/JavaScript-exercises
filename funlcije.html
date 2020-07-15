@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Domaci 06</title>
+</head>
+
+<body>
+    <script>
+        // 1. zadatak
+        // Napisati javascript funkciju proveraZnaka(a, b) koja vraca tacno ako su 2 zadata broja razlicitog znaka, ili netacno u suprotnom.
+        function proveraZnaka(a, b) {
+            if ((a < 0 && b > 0) || (a > 0 && b < 0))
+                return true;
+            else
+                return false;
+        }
+
+        console.log(proveraZnaka(2, 4)); // false
+        console.log(proveraZnaka(-2, 4)); // true
+        console.log(proveraZnaka(2, -4)); // true
+        console.log(proveraZnaka(-2, -4)); // false
+
+
+        // 2. zadatak
+        // Napisati javascript program koji pronalazi sve godine u kojima je 1. Januar padao u nedelju, izmedju 2010 i 2020 godine i ispisuje ih u konzolu.
+        for (var godina = 2010; godina <= 2020; godina++) {
+            var prviJanuar = new Date(godina, 0, 1);
+            if (prviJanuar.getDay() === 0)
+                console.log("Prvi Januar je bio nedelja godine: " + godina);
+        }
+
+
+        // 3. zadatak
+        // Napisati javascript funkciju ukloniKaraktere(str) koja uklanja sve karaktere iz stringa koji se u njemu pojavljuju vise od jednog puta.
+        function ukloniKaraktere(str) {
+            var nizKaraktera = str.split("");
+            var nizRezultat = [];
+
+            for (var i = 0; i < nizKaraktera.length; i++) {
+
+                if (str.indexOf(nizKaraktera[i]) === str.lastIndexOf(nizKaraktera[i]))
+                    nizRezultat.push(nizKaraktera[i]);
+            }
+
+            return nizRezultat.join("");
+        }
+
+        console.log(ukloniKaraktere("java"));
+        console.log(ukloniKaraktere("php"));
+        console.log(ukloniKaraktere("12364532"));
+
+
+        // 4. zadatak
+        // Napisati javascript funkciju reverzniString(str) koja vraca string okrenut naopako (reverzni).
+
+        function reverzniString(str) {
+            return str.split("").reverse().join("");
+        }
+
+        console.log(reverzniString("Javascript"));
+
+
+        // 5. zadatak
+        // Napisati javascript funkciju sortiranjeAZ(str) koja vraca string sortiran po alfabetu.
+        function sortiranjeAZ(str) {
+            return str.split("").sort().join("");
+
+        }
+
+        console.log(sortiranjeAZ("darko"));
+        console.log(sortiranjeAZ("javascript"));
+
+
+        // 6. zadatak
+        // Napisati javascript funkciju svakoPrvoVeliko(str) koja svako prvo slovo svih reci u stringu pretvara u veliko slovo i vraca taj string.
+        function svakoPrvoVeliko(str) {
+            str = str.split(" ");
+
+
+            for (var i = 0, x = str.length; i < x; i++) {
+
+                str[i] = str[i][0].toUpperCase() + str[i].substr(1);
+            }
+
+            return str.join(" ");
+        }
+        console.log(svakoPrvoVeliko("Napisati javascript funkciju koja svako prvo slovo svih reci u stringu pretvara u veliko slovo."));
+
+
+        // 7. zadatak
+        // Napisati javascript funkciju isteCifre(broj) koja proverava da li su sve cifre u nekom broju iste i vraca tacno ako jesu, ili netacno u suprotnom.
+        function isteCifre(broj) {
+            brojKaoString = new String(broj);
+            var nizCifara = brojKaoString.split("");
+            for (var i = 1; i < nizCifara.length; i++) {
+                if (nizCifara[i - 1] !== nizCifara[i])
+                    return false;
+            }
+            return true;
+        }
+
+        console.log(isteCifre(12354));
+        console.log(isteCifre(222));
+        console.log(isteCifre(3331));
+
+    </script>
+</body>
+
+</html>

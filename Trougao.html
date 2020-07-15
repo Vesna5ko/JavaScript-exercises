@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Domaci_03</title>
+</head>
+<body>
+<script>
+/*
+1. Napisati program koja ucitava tri broja sa tastature,
+proverava da li postoji trougao za tim stranicama i ako postoji,
+ispituje koja je vrsta trougla po stranicma.
+Na kraju ispisati odgovarajucu poruku ako trougao ne postoji ili njegovu vrstu ako postoji.
+
+Vrste trouglova po stranicama:
+jednakostranicni (sve tri stranice su jednake),
+jednakokraki (dve stranice su jednake) i
+raznostranicni (nema jednakih stranica)
+
+Provera da li postoji trougao:
+za svaku stranicu mora da vazi da je manja od zbira preostale dve stranice!
+
+BONUS zadaci:
+
+2. Napisati funkciju postojiTrogugao(a, b, c) koja vraca tacno ako trougao od zadatih stranica postoji, i netacno ako se od zadatih stranica ne moze sastaviti trougao
+
+3. Napisati funkciju vratiVrstuTrougla(a, b, c) koja uzima 3 parametra i prvo proverava da li postoji trougao sa zadatim stranicama i ako postoji, odrjedjuje i vraca vrstu trougla. Ako ne postoji, vraca poruku "Takav trougao ne postoji".
+
+Zatim ove dve funkcije upotrebiti u prvom zadatku. 
+*/
+
+
+// definisemo potrebne funkcije
+
+// ovu funkciju nisam trazio u tekstu zadatka ali sam je napisao da kod bude jos elegantniji
+function unesiStranicu(){
+	var str = parseFloat(prompt("Unesi stranicu trougla:"));
+	if (isNaN(str)){    // ugradjena funkcija isNaN(x) vraca true ako je x broj, i false ako nije
+		return -1;
+	}
+	else{
+		return str;
+	}
+}
+
+// proverava da li postoji trougao na osnovu zadatih stranica
+function postojiTrougao(a, b, c){
+	if(a>0 && b>0 && c>0 && a+b>c && a+c>b && b+c>a)
+		return true; 
+	// primetite da ovde nema else (ne bi bila greska da ima ali ovo je naprednije)
+	// pitanje za vas, zasto sam mogao da izostavim else? :)
+	return false;
+}
+
+// vraca vrstu
+function vratiVrstuTrougla(a, b, c){
+	if(postojiTrougao(a, b, c)){  // prvo pozovemo funkciju za proveru, pa ako ona vrati tacno, onda je sve ok i odredjujemo vrstu 
+		if(a==b && b==c) 
+			return "jednakostranicni";
+		else if(a==b || a==c || b==c)
+			return "jednakokraki";
+		else
+			return "raznostranicni";
+	}
+	else{
+		return "Trougao sa stranicama: "+a+", "+b+" i "+c+" ne postoji!";
+	}
+}
+
+
+// izvrsni deo programa gde pozivamo i definisane funkcije:
+var a = unesiStranicu();
+var b = unesiStranicu();
+var c = unesiStranicu();
+
+var vrsta = vratiVrstuTrougla(a, b, c);
+console.log(vrsta);
+
+
+</script>
+</body>
+</html>

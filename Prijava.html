@@ -1,0 +1,92 @@
+<!Doctype html>
+<html>
+	<head>
+		<title>Validacija forme</title>	
+		<style>	
+			.usloviDiv{
+				border: purple 2px dotted;
+				border-radius: 10px;
+				padding: 5px;
+				color: blue;
+				width: 250px;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<fieldset>
+			<legend>Prijava za nas katalog</legend>
+			<form name='prijava' action='' method='get'>
+				Ime i prezime: <input type='text' id='imePrezime' name='imePrezime'>
+				E-mail: <input type='email' id='emailAdresa' name='emailAdresa'>
+				Prikazi uslove <input type='checkbox' id='prikazUslova' name='prikazUslova'>
+				Prihvatam uslove <input type='checkbox' id='prihvatUslova' name='prihvatUslova'>
+				<br><br>
+				<div id='uslovi'>
+					<h2>Uslovi prijave</h2>
+					<p>Za prijavu na katalog vaze opsti uslovi kompanije. Svako krsenje bice sankcionisano!</p>
+				</div>
+				<br>
+				<input type='submit' id='prijavi' name='prijavi' value='Prijavi se'>
+			</form>
+		</fieldset>
+		<hr>
+		<h2>Sortiranje osoba</h2>
+		<form name='sortiranje' action='' method='get'>
+			<input type='text' id='osoba' name='osoba'>
+			<input type='button' id='unesi' name='unesi' value='Unesi osobu'>
+			<br><br>
+			<textarea id='sortiraneOsobe' name='sortiraneOsobe' rows='10' cols='30'></textarea>
+		</form>
+	</body>
+</html>
+<script>
+	// sortiranje ****************************************************************************
+	var osoba = document.getElementById('osoba');
+	var dugmeUnesi = document.getElementById('unesi');
+	var sortirano = document.getElementById('sortiraneOsobe');
+	
+	dugmeUnesi.addEventListener('click', sortiraj, false);
+	
+	var nizOsoba = [];
+	function sortiraj(){
+		// sortirano.value = osoba.value;
+		nizOsoba.push(osoba.value);
+		nizOsoba.sort();
+		sortirano.value = nizOsoba.join('\n');
+		osoba.value = '';
+		osoba.focus();
+	}
+	
+	// validacija forme ********************************************************************** 
+	var uslovi = document.getElementById('uslovi');
+	uslovi.classList.add('usloviDiv');
+	
+	var dugmePrijava = document.getElementById('prijavi');
+	dugmePrijava.disabled = true;
+	
+	var cbUsloviPrihvat = document.getElementById('prihvatUslova');
+	cbUsloviPrihvat.addEventListener('click',usloviPrihvaceni,false);
+	
+	function usloviPrihvaceni(){
+		if(cbUsloviPrihvat.checked){
+			dugmePrijava.disabled = false;
+		}
+		else{
+			dugmePrijava.disabled = true;
+		}
+	}
+	
+	var cbUsloviPrikaz = document.getElementById('prikazUslova');
+	cbUsloviPrikaz.addEventListener('click',usloviPrikazani,false);
+	
+	function usloviPrikazani(){
+		if(cbUsloviPrikaz.checked){
+			uslovi.style.display = 'block';
+		}
+		else{
+			uslovi.style.display = 'none';
+		}
+	}
+	
+</script>

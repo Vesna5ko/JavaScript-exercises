@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Domaci_01</title>
+</head>
+<body>
+<script>
+/*
+1. Napisati program koji radi sledece:
+ - korisnik unosi svoje ime
+ - korisnik unosi svoj broj godina
+ - program ispisuje u iskacucem prozoru (funkcija alert() ) odredjenu poruku.
+Primer:
+za uneseno ime: Darko, unesene godine: 37, poruka u prozorcicu treba da izgleda:
+Ti se zoves Darko i imas 37 godina.
+*/
+var ime = prompt("Kako se zoves?");
+var godine = prompt("Koliko imas godina?");
+var poruka = "Ti se zoves "+ime+" i imas "+godine+" godina.";
+alert(poruka);
+
+/*
+2. Napisati program koji unosi neki broj sa tastature (funkcija prompt), zatim racuna kvadrat tog broja i kub tog broja i 
+	ispisuje ih u konzoli. (kvadrat se racuna kao x*x a kub kao x*x*x)
+Primer:
+za uneseni broj 5, poruka u konzoli treba da izgleda:
+Njegov kvadrat je 25 a kub 125.
+*/
+var broj = prompt("Unesi neki broj:");
+var kvadrat = broj*broj;
+var kub = broj*broj*broj;
+console.log("Njegov kvadrat je "+kvadrat+" a kub "+kub+".");
+
+/*
+3. Napisati program koji unosi dva broja sa tastature, i ispisuje veci broj u konzoli. Ukoliko su brojevi jednaki, 
+	ispisati u konzoli odgovarajucu poruku.
+*/
+var br1 = prompt("Unesi prvi broj:");
+var br2 = prompt("Unesi drugi broj:");
+if(br1>br2){
+	console.log(br1);
+}
+else if(br1<br2){
+	console.log(br2);
+}
+else{
+	console.log("Brojevi su jednaki.");
+}
+</script>
+</body>
+</html>

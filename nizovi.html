@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Domaci 05</title>
+</head>
+<body>
+	<script>
+		// 1.
+		// Napisati funkciju ispisiNiz(nekiNiz) za ispis svih elemenata niza na stranicu (ne u konzolu) i primeniti je na niz ["true", 1, "false", 0, "undefined"]
+		function ispisiNiz(nekiNiz){
+			for(var i=0; i<nekiNiz.length ; i++){
+				document.write(nekiNiz[i]+" ");
+			}
+		}
+		
+		var niz = ["true", 1, "false", 0, "undefined"];
+		ispisiNiz(niz);
+		
+		// 2. 
+		// Prepraviti funkciju tako da ispisuje samo string ili samo numeric podatke po potrebi (tj pozivu korisnika)
+		function ispisiNiz1(nekiNiz, tip){
+			for(var i=0; i<nekiNiz.length ; i++){
+				if(typeof nekiNiz[i] == tip ){
+					document.write(nekiNiz[i]+" ");
+				}
+			}
+		}
+		
+		ispisiNiz1(niz, "number");
+		
+		// 3. 
+		// Dat je niz: var a = [-5, 3, 0, 10, 9, -15, -2, -8, 6];
+		// odrediti sume svih parnih i svih neparnih brojeva i ispisati koja je suma veca
+		var a = [-5, 3, 0, 10, 9, -15, -2, -8, 6];
+		var sumaP = sumaNp = 0;
+		for(var i=0; i<a.length ; i++){
+			if(a[i] % 2 ==0)
+				sumaP += a[i];
+			else
+				sumaNp += a[i];
+		}
+		if(sumaP > sumaNp){
+			document.write("<br> veca je suma parnih "+sumaP);
+		}
+		else if(sumaP < sumaNp){
+			document.write("<br> veca je suma neparnih "+sumaNp);
+		}
+		else
+			document.write("<br> sume su jednake");
+		
+		
+		
+		
+	</script>
+</body>
+</html>

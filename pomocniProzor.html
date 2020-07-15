@@ -1,0 +1,39 @@
+<!Doctype html>
+<html>
+	<head>
+		<title>Pomocni prozor</title>	
+	</head>
+	<body>
+		<button name="zatvori" id="zatvori">Zatvori prozor</button>
+		<div id="poruka">Prozor ce se zatvoriti za <span id="sekunde">5</span> s.</div>
+	</body>
+</html>
+<script>
+	var poruka =  document.getElementById('poruka');
+	poruka.style.display = 'none';
+	
+	var dugmeZatvori = document.getElementById('zatvori');
+	dugmeZatvori.addEventListener('click', zatvoriProzor, false);
+	
+	function zatvoriProzor(){
+		setInterval(odbrojavanje, 1000);
+		poruka.style.display = 'block';
+	}
+	
+	var sekunde = document.getElementById('sekunde');
+	var preostalo = 4;
+	function odbrojavanje(){
+		if(preostalo == 0){
+			window.close();
+		}
+		else if(preostalo<3){
+			poruka.style.color = 'red';
+			sekunde.innerHTML = preostalo;
+			preostalo--;
+		}
+		else{
+			sekunde.innerHTML = preostalo;
+			preostalo--;
+		}
+	}
+</script>

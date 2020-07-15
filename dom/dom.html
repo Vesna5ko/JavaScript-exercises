@@ -1,0 +1,104 @@
+<!Doctype html>
+<html>
+	<head>
+		<title>Dom</title>	
+		<style>	
+			.stil1{
+				background-color: orange;
+			}
+			.stil2{
+				color: purple;
+			}
+			
+			.ugaseno{
+				background-color: black;
+				color: white;
+			}
+			
+			.upaljeno{
+				background-color: yellow;
+				color: black;
+			}
+		</style>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	var prviDiv = document.createElement("div"); // <div></div>
+	prviDiv.textContent = "Zdravo";				 // <div>Zdravo</div>
+	//prviDiv.class = 'prvaKlasa';
+	//prviDiv.setAttribute('class','prvaKlasa'); <div class='prvaKlasa'>Zdravo</div>
+	prviDiv.id = 'prvi';						// <div class='prvaKlasa' id='prvi'>Zdravo</div>
+	prviDiv.setAttribute('class','prva');
+	//prviDiv.style.color = 'blue';
+	document.body.appendChild(prviDiv);
+	
+	// 1. zadatak
+	// kreirati jedan roditeljski div element sa atributima id i class
+	// kreirati jedan h2 i jedan p element i postaviti ih u taj roditeljski div element
+	// dodeliti im vrednosti: za h2: naslov 2, za p: tekst paragrafa
+	// stilizovati:
+	// h2 ima sivu pozadinu i crvena slova
+	// p ima boldovana slova
+	// dodati im neki sadrzaj (h2 i p)
+	var roditeljski = document.createElement("div");
+	roditeljski.id = 'rod';	
+	roditeljski.setAttribute('class','rodkl');
+	
+	var naslov = document.createElement("h2");
+	naslov.textContent = "Naslov 2";	
+	naslov.style.backgroundColor = "silver";
+	naslov.style.color = "red";
+	
+	var paragraf = document.createElement("p");
+	paragraf.textContent = "tekst paragrafa";
+	paragraf.style.fontWeight = "bold";	
+	
+	var slika = document.createElement("img");
+	slika.src = "img/sto.jpg";
+	roditeljski.appendChild(naslov);
+	roditeljski.appendChild(paragraf);
+	roditeljski.appendChild(slika);
+	
+	document.body.appendChild(roditeljski);
+	
+	prviDiv.classList.add('stil1', 'stil2');
+	//prviDiv.classList.add('stil2');
+	console.log(prviDiv.classList.contains('stil1'));
+	//prviDiv.classList.remove('stil1');
+	console.log(prviDiv.classList.contains('stil1'));
+	
+	// 2. zadatak
+	// kreirati jedno dugme
+	// pocetna vrednost je 'ugaseno'
+	// slova su bela
+	// pozadina crna
+	// i druga moguca vrednost je 'upaljeno'
+	// slova su crna
+	// pozadina zuta
+	// dodati mu funkciju 'izmeniStanje' aktivira na dogadjaj click
+	// funkcija izmeniStanje radi sledece:
+	// ako je dugme ugaseno, pali ga
+	// ako je upaljeno, gasi ga
+	document.body.appendChild(document.createElement("br")); // kreiranje novog reda
+	
+	var dugme = document.createElement("button");
+	dugme.textContent = "Upali";
+	dugme.classList.add('ugaseno');
+	dugme.addEventListener('click', izmeniStanje, false);
+	document.body.appendChild(dugme);
+	
+	function izmeniStanje(){
+		if(dugme.classList.contains('ugaseno')){
+			dugme.classList.remove('ugaseno');
+			dugme.classList.add('upaljeno');
+			dugme.textContent = "Ugasi";
+		}
+		else{
+			dugme.classList.remove('upaljeno');
+			dugme.classList.add('ugaseno');
+			dugme.textContent = "Upali";
+		}
+	}
+</script>

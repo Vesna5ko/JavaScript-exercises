@@ -1,0 +1,74 @@
+<!Doctype html>
+<html>
+	<head>
+		<title>Korisne funkcije</title>	
+	</head>
+	<body>
+		<button name="otvori" id="otvori">Otvori prozor</button>
+		<button name="zatvori" id="zatvori">Zatvori prozor</button>
+		<button name="stampaj" id="stampaj">Stampaj stranicu</button>
+		<hr>
+		<button name="kreni" id="kreni">Kreni</button>
+		<button name="stani" id="stani">Stani</button>
+		<span id='sat'></span>
+	</body>
+</html>
+<script>
+	var otvoreniProzor;
+	
+	var dugmeOtvori = document.getElementById('otvori');
+	dugmeOtvori.addEventListener('click', otvoriProzor, false);
+	function otvoriProzor(){
+		var adresa = 'pomocniProzor.html';
+		var opcije = 'top=150, left=250, width=500, height=300';
+		// najcesce se koriste vec gotovi prozori 
+		// a sadrzaj moze da se dodaje i odavde... (document.write())
+		otvoreniProzor = window.open(adresa, '', opcije);
+	}
+	
+	var dugmeZatvori = document.getElementById('zatvori');
+	dugmeZatvori.addEventListener('click', zatvoriProzor, false);
+	
+	function zatvoriProzor(){
+		otvoreniProzor.close();
+	}
+	
+	var dugmeStampaj = document.getElementById('stampaj');
+	dugmeStampaj.addEventListener('click', stampajProzor, false);
+	
+	function stampajProzor(){
+		window.print();
+	}
+	
+	
+	var dugmeKreni = document.getElementById('kreni');
+	dugmeKreni.addEventListener('click', kreni, false);
+	var brojanje;
+	var brojac = 0;
+	
+	function kreni(){
+		 brojanje = setInterval(function(){
+			brojac++;
+			console.log(brojac);
+		 }, 1000);
+	}
+	
+	var dugmeStani = document.getElementById('stani');
+	dugmeStani.addEventListener('click', stani, false);
+	
+	function stani(){
+		clearInterval(brojanje);
+	}
+	
+	// 1. zadatak
+	// kreirati jedan span
+	// i u njemu prikazati trenutno vreme u formatu: hh:mm:ss
+	var sat = document.getElementById('sat');
+	setInterval(prikaziVreme, 1000);
+	
+	function prikaziVreme(){
+		var danas = new Date();
+		var vreme = danas.toLocaleTimeString();
+		sat.innerHTML = vreme;
+	}
+</script>

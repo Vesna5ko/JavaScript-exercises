@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Domaci 04</title>
+</head>
+<body>
+	<script>
+		
+		
+		/* 1. for ciklusom ispisati u konzoli sve kolicnike gde je deljenik broj 10
+		a delilac bilo koji ceo broj iz intervala [-5,5] */
+		for (var i = -5; i <= 5; i++) {
+			if (i == 0)
+				continue;
+			console.log((10 / i) + " ");
+		}
+
+		/* 2. ciklusom while ispisati u konzoli sve brojeve od 1 do 50 koji su neparni i deljivi brojem 3 */
+		var i = 1;
+		while (i <= 50) {
+			if (i % 2 != 0 && i % 3 == 0)
+				console.log(i + " ");
+
+			i++;
+		}
+
+		/* 3. napisati program koji baca 2 kockice sve dok ne dobije obe iste
+		Za bacanje kockica korisiti funkciju: 
+		function baciKockicu(){
+			return Math.floor((Math.random() * 6) + 1);
+		}
+		koja vraca ceo broj od 1 do 6 */
+		do {
+			var kockica1 = baciKockicu();
+			var kockica2 = baciKockicu();
+			console.log("Bacili smo: " + kockica1 + " i " + kockica2);
+		} while (kockica1 != kockica2);
+
+		function baciKockicu() {
+			return Math.floor((Math.random() * 6) + 1);
+		}
+		
+		/* 4. izracunati srednju vrednost intervala cije granice korisnik unosi sa tastature */
+		var donjaGranica = parseInt(prompt("Unesite donju granicu intervala:"));
+		var gornjaGranica = parseInt(prompt("Unesite gornju granicu intervala:"));
+		if(isNaN(donjaGranica) || isNaN(gornjaGranica) || gornjaGranica<=donjaGranica)
+			document.write("Granice nisu korektne!");
+		else{
+			var zbir = 0;
+			var brojSabiraka = 0;
+			for(var i=donjaGranica; i<=gornjaGranica; i++){
+				zbir += i;  // zbir = zbir+i;
+				brojSabiraka++;
+			}
+			var srednjaVrednost = zbir/brojSabiraka;
+			console.loge("Srednja vrednost je: "+srednjaVrednost);
+		}
+	</script>
+</body>
+</html>
